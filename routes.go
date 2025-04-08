@@ -9,7 +9,6 @@ import (
 func GetQueryParam(logger logging.Logger) http.Handler {
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		panic("Testing server failure")
 		logger.Info("/get")
 		query := r.URL.Query()
 		for key, value := range query {

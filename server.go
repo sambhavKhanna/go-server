@@ -75,5 +75,8 @@ func run(w io.Writer, ctx context.Context) error {
 
 func main() {
 	ctx := context.Background()
-	run(os.Stderr, ctx)
+	if err := run(os.Stdout, ctx); err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+		os.Exit(1)
+	}
 }

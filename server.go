@@ -25,18 +25,6 @@ func NewServer(
 	return handler
 }
 
-func LoggingMiddleware(next http.Handler, logger logging.Logger) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
-		logger.Info("Started %s %s", r.Method, r.URL.Path)
-
-		next.ServeHTTP(w, r)
-
-		duration := time.Since(start)
-		logger.Info("Completed %s in %v", r.URL.Path, duration)
-	})
-}
-
 func run(w io.Writer, ctx context.Context) error {
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
 	defer cancel()

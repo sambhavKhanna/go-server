@@ -1,8 +1,30 @@
-FROM scratch
+# Build stage
+FROM golang:1.22.4-alpine AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY ./go-server .
+# Copy go mod and sum files
+COPY go.mod go.sum ./
 
+# Download dependencies
+RUN go mod download
 
-CMD ["./go-server"]
+# Copy source code
+COPY . .
+
+# Build the application
+RUN CGO_ENABLED=0 GOOS=linux go build -o service ./cmd/service
+
+# Final stage
+FROM alpine:latest
+
+WORKDIR /app
+
+# Copy the binary from builder
+COPY --from=builder /app/service .
+
+# Expose port
+EXPOSE 8080
+
+# Run the application
+CMD ["./service"]

@@ -49,6 +49,9 @@ func run(w io.Writer, ctx context.Context, getenv func(string) string) error {
 		if err := httpServer.Shutdown(shutdownCtx); err != nil {
 			fmt.Fprintf(os.Stderr, "error shutting down http server: %s\n", err)
 		}
+		if err := db.Close(); err != nil {
+			fmt.Fprintf(os.Stderr, "error closing database: %s\n", err)
+		}
 	}()
 
 	wg.Wait()

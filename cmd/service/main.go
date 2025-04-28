@@ -58,18 +58,18 @@ func run(w io.Writer, ctx context.Context, getenv func(string) string) error {
 func main() {
 	getenv := func(key string) string {
 		switch key {
-			case "DB_HOST":
-				return os.Getenv("POSTGRES_HOST")
-			case "DB_PORT":
-				return os.Getenv("POSTGRES_PORT")
-			case "DB_USER":
-				return os.Getenv("POSTGRES_USER")
-			case "DB_PASSWORD":
-				return os.Getenv("POSTGRES_PASSWORD")
-			case "DB_NAME":
-				return os.Getenv("POSTGRES_DB")
-			default:
-				return ""
+		case "DB_HOST":
+			return os.Getenv("POSTGRES_HOST")
+		case "DB_PORT":
+			return os.Getenv("POSTGRES_PORT")
+		case "DB_USER":
+			return os.Getenv("POSTGRES_USER")
+		case "DB_PASSWORD":
+			return os.Getenv("POSTGRES_PASSWORD")
+		case "DB_NAME":
+			return os.Getenv("POSTGRES_DB")
+		default:
+			return ""
 		}
 	}
 

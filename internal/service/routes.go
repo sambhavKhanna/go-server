@@ -8,7 +8,6 @@ import (
 
 	"github.com/sambhavKhanna/infra/database"
 	"github.com/sambhavKhanna/infra/logger"
-
 )
 
 func NewServer(
@@ -94,9 +93,7 @@ func GetUsers(logger logging.Logger, db db.Db) http.Handler {
 	})
 }
 
-
 func GetQueryParam(logger logging.Logger) http.Handler {
-
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		logger.Info("/get")
 		query := r.URL.Query()

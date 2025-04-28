@@ -23,17 +23,17 @@ func New(w io.Writer) DefaultLogger {
 }
 
 func (l DefaultLogger) Info(msg string, args ...any) {
-	l.logger.Printf("[INFO] " + msg, args...)
+	l.logger.Printf("[INFO] "+msg, args...)
 }
 
 func (l DefaultLogger) Debug(msg string, args ...any) {
-	l.logger.Printf("[DEBUG] " + msg, args...)
+	l.logger.Printf("[DEBUG] "+msg, args...)
 }
 
 func (l DefaultLogger) Warn(msg string, args ...any) {
-	l.logger.Printf("[WARN] " + msg, args...)
+	l.logger.Printf("[WARN] "+msg, args...)
 }
 
 func (l DefaultLogger) Error(msg string, args ...any) {
-	l.logger.Printf("[ERROR] " + msg, args...)
+	l.logger.Printf("[ERROR] "+msg, args...)
 }

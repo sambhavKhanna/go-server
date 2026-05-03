@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sambhavKhanna/infra/database"
-	"github.com/sambhavKhanna/infra/logger"
+	"github.com/sambhavKhanna/Infra/database"
+	"github.com/sambhavKhanna/Infra/Logger"
 	"github.com/sambhavKhanna/internal/service"
 )
 
